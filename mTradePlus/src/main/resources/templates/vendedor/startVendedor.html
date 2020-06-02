@@ -19,10 +19,11 @@
 								<th scope="col">#</th>
 								<th scope="col">Nombres</th>
 								<th scope="col">Apellidos</th>
+								<th scope="col">Dni</th>
+								<th scope="col">RUC</th>
 								<th scope="col">Fecha Nacimiento</th>
 								<th scope="col">Direccion</th>
 								<th scope="col">Correo electronico</th>
-								<th scope="col">RUC</th>
 							</tr>
 						</thead>
 						<tbody th:each="vendedor: ${vendedores}">
@@ -30,21 +31,28 @@
 								<th scope="row" th:text="${vendedor.idVendedor}">1</th>
 								<td th:text="${vendedor.nombreVendedor}">.</td>
 								<td th:text="${vendedor.apellidoVendedor}">.</td>
+								<td th:text="${vendedor.dniVendedor}">.</td>
+								<td th:text="${vendedor.rucVendedor}">.</td>
 								<td th:text="${vendedor.fechaNacimientoV}">.</td>
 								<td th:text="${vendedor.direccionVendedor}">.</td>
 								<td th:text="${vendedor.correoVendedor}">.</td>
-								<td th:text="${vendedor.rucCliente}">.</td>
 								<!--<td th:text="${cliente.suscripcion.precioSuscripcion}">.</td>---->
-
+								<td>
+									<a href="" class="btn btn-secondary"> <i class="fas fa-info"></i> </a>
+									<a th:href="@{'/mTradePlus/vendedor/editarVendedor/' + ${vendedor.idVendedor}}" class="btn btn-info"> <i class="fas fa-edit"></i> </a>
+									<a th:href="@{'/mTradePlus/Vendedor/eliminarVendedor/' + ${vendedor.idVendedor}}" class="btn btn-danger"> <i class="fas fa-trash"></i> </a>
+								</td>
+								
 							</tr>
 						</tbody>
 					</table>
 
-				</div>
-				<div class="card-footer text-muted"></div>
 			</div>
-
-
+				<!--  --------------------- EN ESTE FOOTER SE AGREGAN BOTONES --------------------->
+				<div class="card-footer text-center">
+					<a th:href="@{/mTradePlus/vendedor/nuevo}" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Nuevo</a>
+				</div>
+			</div>
 
 		</section>
 	</main>

@@ -67,8 +67,7 @@ public class VendedorServiceImpl implements VendedorService{
 	}
 
 	@Override
-	@Transactional(readOnly = true)
-	public List<Vendedor> findByRucVendedor(Integer rucVendedor) throws Exception {
+	public List<Vendedor> findByRucVendedor(String rucVendedor) throws Exception {
 		return vendedorRepository.findByRucVendedor(rucVendedor);
 	}
 

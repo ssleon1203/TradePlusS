@@ -10,11 +10,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -39,6 +38,10 @@ public class Vendedor {
 	@Column(name = "apellidoVendedor", length = 40, nullable = false)
 	private String apellidoVendedor;
 	
+	@Size(min = 8, max = 8, message = "El DNI debe ser de 8 digitos")
+	@Column(name = "dni", length = 8, nullable = false)
+	private String dniVendedor;
+	
 	@Past(message = "Debe ingresar fecha de nacimiento")
 	@Column(name = "fechaNacimientoV", nullable = false)
 	@Temporal(value = TemporalType.DATE)
@@ -54,8 +57,7 @@ public class Vendedor {
 	@Column(name = "correoVendedor", length = 40,nullable = false)
 	private String correoVendedor;
 	
-	@Min(value = 11, message = "Debe ingresar los 11 digitos de su RUC")
-	@Max(value = 11, message = "Debe ingresar los 11 digitos de su RUC")
-	@Column(name = "rucVendedor", nullable = false)
-	private Integer rucVendedor;
+	@Size(min = 11, max = 11, message = "El RUC debe ser de 11 digitos")
+	@Column(name = "rucVendedor",length = 11, nullable = false)
+	private String rucVendedor;
 }

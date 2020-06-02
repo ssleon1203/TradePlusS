@@ -31,20 +31,24 @@
 	 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	   
 	    <ul class="navbar-nav mr-auto">
-	      <li class="nav-item disable">
-	        <a class="nav-link" href="#"> <i class="fas fa-store"></i> Inicio <span class="sr-only">(current)</span></a>
+	      <li class="nav-item">
+	        <a class="nav-link" th:href="@{/mTradePlus/producto}"> <i class="fas fa-store"></i> Inicio</a>
 	      </li>
 	       
-	      <li class="nav-item disable">
+	      <li class="nav-item">
 	        <a class="nav-link" href="#"> <i class="fas fa-shopping-cart"></i> Compras</a>
 	      </li>
 	      
-	      <li class="nav-item disable">
+	      <li class="nav-item">
 	        <a class="nav-link" href="#"> <i class="fas fa-money-bill-wave"></i> Ventas</a>
 	      </li>
 	      
-	      <li class="nav-item disable">
-	        <a class="nav-link" href="#"> <i class="fas fa-user"></i> Perfil</a>
+	      <li class="nav-item">
+	        <a class="nav-link" th:href="@{/mTradePlus/cliente}"> <i class="fas fa-user"></i> Clientes</a>
+	      </li>
+	      
+	      <li class="nav-item">
+	        <a class="nav-link" th:href="@{/mTradePlus/vendedor}"> <i class="fas fa-user-tie"></i> Vendedores</a>
 	      </li>
 	    </ul>
 	    <form class="form-inline my-1 my-lg-1">
