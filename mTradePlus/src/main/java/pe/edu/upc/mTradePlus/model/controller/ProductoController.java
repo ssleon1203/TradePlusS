@@ -11,17 +11,24 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import pe.edu.upc.mTradePlus.model.entity.Producto;
+import pe.edu.upc.mTradePlus.model.entity.Vendedor;
 import pe.edu.upc.mTradePlus.model.service.ProductoService;
+import pe.edu.upc.mTradePlus.model.service.VendedorService;
 
 @Controller
 @RequestMapping("mTradePlus/producto")
+@SessionAttributes("producto")
 public class ProductoController {
 
 	@Autowired
 	private ProductoService productoService;
+	
+	@Autowired
+	private VendedorService vendedorService;
 	
 	@GetMapping
 	public String starProducto(Model model) {
@@ -38,6 +45,15 @@ public class ProductoController {
 		public String nuevoProducto(Model model) {
 			Producto producto = new Producto();
 			model.addAttribute("producto", producto);
+			
+			try {
+				List<Vendedor> vendedores  = vendedorService.readAll();
+				model.addAttribute("vendedor", vendedores);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			
 			return "/producto/nuevoProducto";
 		}
 //------------------------- SE GUARDA NUEVO CLIENTE -------------------------
@@ -59,6 +75,9 @@ public class ProductoController {
 				Optional<Producto> optional = productoService.findById(id);
 				if(optional.isPresent()) {
 					model.addAttribute("producto", optional.get());
+					
+					List<Vendedor> vendedores = vendedorService.readAll();
+					model.addAttribute("vendedores", vendedores);
 				}
 				else {
 					return "redirect: /mTradePlus/producto";
@@ -70,7 +89,7 @@ public class ProductoController {
 			return "/producto/editarProducto";
 		}
 //------------------------- SE EDITA CLIENTE -------------------------
-		@GetMapping("eliminarProducto/{idProducto}")
+		@GetMapping("/eliminarProducto/{idProducto}")
 		public String eliminarProducto(@PathVariable("idProducto") Integer id, Model model) {
 			try {
 				Optional<Producto> optional = productoService.findById(id);

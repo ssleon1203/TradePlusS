@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -38,7 +39,7 @@ public class Producto {
 	@Column(name = "precioProducto", nullable = false)
 	private double precioProducto;
 	
-	@NotBlank(message = "Debe ingresar una descripcion breve")
+	//@Size(min = 1, message = "Debe ingresar una descripcion breve")
 	@Column(name = "descripcionProducto", length = 250, nullable = false)
 	private String descripcionProducto;
 	

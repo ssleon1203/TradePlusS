@@ -1,11 +1,16 @@
 package pe.edu.upc.mTradePlus.model.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -60,4 +65,16 @@ public class Vendedor {
 	@Size(min = 11, max = 11, message = "El RUC debe ser de 11 digitos")
 	@Column(name = "rucVendedor",length = 11, nullable = false)
 	private String rucVendedor;
+	
+//---------------RELACION: UN VENDEDOR INGRESA MUCHOS PRODUCTOS------------------
+	@OneToMany(mappedBy = "vendedor",fetch = FetchType.LAZY)
+	private List<Producto> productos;
+	
+	public Vendedor() {
+		productos = new ArrayList<>();
+	}
+	
+	public void addProducto(Producto producto) {
+		productos.add(producto);
+	}
 }
