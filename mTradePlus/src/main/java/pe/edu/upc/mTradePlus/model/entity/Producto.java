@@ -48,7 +48,7 @@ public class Producto {
 	
 	//RELACION: MUCHOS PRODUCTOS LO INGRESA UN VENDEDOR
 	@ManyToOne
-	@JoinColumn(name="IdVendedor")
+	@JoinColumn(name="idVendedor")
 	private Vendedor vendedor;
 	
 	//RELACION: MUCHOS A MUCHOS CON CLIENTE
