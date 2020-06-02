@@ -16,6 +16,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -40,6 +42,7 @@ public class Vendedor {
 	@Past(message = "Debe ingresar fecha de nacimiento")
 	@Column(name = "fechaNacimientoV", nullable = false)
 	@Temporal(value = TemporalType.DATE)
+	@DateTimeFormat(pattern = "yy-mm-dd")
 	private Date fechaNacimientoV;
 	
 	@NotBlank(message = "Debe ingresar una direccion")

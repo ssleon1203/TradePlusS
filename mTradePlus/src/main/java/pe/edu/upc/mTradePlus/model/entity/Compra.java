@@ -15,6 +15,9 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -51,11 +54,13 @@ public class Compra {
 	@Future(message = "Debe ingresar fecha de compra")
 	@Column(name = "fechaCompra", nullable = false)
 	@Temporal(value = TemporalType.DATE)
+	@DateTimeFormat(pattern = "yy-mm-dd")
 	private Date fechaCompra;
 	
 	@Future(message = "Debe ingresar fecha de entrega")
 	@Column(name = "fechaEntrega", nullable = false)
 	@Temporal(value = TemporalType.DATE)
+	@DateTimeFormat(pattern = "yy-mm-dd")
 	private Date fechaEntrega;
 	
 	//RELACION: UNA COMPRA TIENE MUCHAS SUSCRIPCIONES
