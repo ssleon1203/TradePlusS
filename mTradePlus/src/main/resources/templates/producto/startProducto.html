@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace = "layout/layout :: head">
+</head>
+<body>
+	<header th:replace = "layout/layout :: header"></header>
+	
+<!--  ------------------LISTA DE PRODUCTO------------------------------------------->
+	<main th:fragment = "listaProducto" role="main">
+		<section class="container">
+
+			<div class="card text-center">
+				<div class="card-header">Productos</div>
+				<div class="card-body">
+					
+					<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Nombre del Producto</th>
+				<th scope="col">Precio</th>
+				<th scope="col">Descripcion del producto</th>
+				<th scope="col">Stock del producto</th>
+				<th scope="col">Vendedor</th>
+			</tr>
+		</thead>
+		<tbody th:each="producto: ${productos}">
+			<tr>
+				<th scope="row" th:text="${producto.idProducto}">1</th>
+				<td th:text="${producto.nombreProducto}">.</td>
+				<td th:text="${producto.precioProducto}">.</td>
+				<td th:text="${producto.descripcionProducto}">.</td>
+				<td th:text="${producto.cantidadProducto}">.</td>
+				<td th:text="${producto.nombreVendedor}">.</td>
+			</tr>
+		</tbody>
+	</table>
+					
+				</div>
+				<div class="card-footer text-muted"> </div>
+			</div>
+
+			
+	
+		</section>
+	</main>
+<!--  ----------------FOOTER------------------------------------------------>		
+	<footer th:replace = "layout/layout :: footer"></footer>
+</body>
+</html>

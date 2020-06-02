@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="" xmlns:th="http://www.thymeleaf.org">
+<head th:replace = "layout/layout :: head">
+</head>
+<body>
+	<header th:replace = "layout/layout :: header"></header>
+
+<!--  ------------------FORMULARIO DE NUEVOS CLIENTES------------------------------------------->
+	<main role="main">
+	<section class="container">
+
+		<div class="card text-center">
+			<div class="card-header">Editar cliente</div>
+			<div class="card-body text-left">
+			
+			 <form th:action="@{/mTradePlus/cliente/guardarCliente}" th:object="${cliente}" method="post">
+				  
+				  <div class="form-row">
+					  <div class="form-group col-md-6">
+					    <label for="nombreCliente">Nombre completo</label>
+					    <input type="text" class="form-control" th:field="*{nombreCliente}" placeholder="Nombre completo">
+					  </div>
+					  
+					  <div class="form-group col-md-6">
+					    <label for="apellidoCliente">Apellido Completo</label>
+					    <input type="text" class="form-control" th:field="*{apellidoCliente}" placeholder="Apellido completo" >
+					  </div>
+				  </div>
+				  
+				  <div class="form-row">
+					  <div class="form-group col-md-6">
+					    <label for="fechaNacimiento">Fecha de nacimiento</label>
+					    <input type="text" class="form-control" th:field="*{fechaNacimiento}" placeholder="AA/MM/DD" >
+					  </div>
+					  <div class="form-group col-md-6">
+					    <label for="direccionCliente">Direccion completa</label>
+					    <input type="text" class="form-control" th:field="*{direccionCliente}" placeholder="Ingrese su direccion de residencia">
+					  </div>
+				  </div>
+				  
+				  <div class="form-row">
+						<label for="correoCliente">Correo electronico</label> 
+						<input type="email"	class="form-control" th:field="*{correoCliente}" placeholder="ejemplo@gmail.com">
+				  </div>
+				  
+				  <button type="submit" class="btn btn-success"><i class="fas fa-check-circle"></i> Grabar </button>
+				  <a th:href="@{/mTradePlus/cliente}" class="btn btn-danger"><i class="fas fa-times-circle"></i> Cancelar</a>
+				</form>
+			
+			</div>
+			<div class="card-footer text-center">
+				
+			</div>
+		</div>
+
+	</section>
+</main>
+<!--  ----------------FOOTER------------------------------------------------>	
+	<footer th:replace = "layout/layout :: footer"></footer>
+</body>
+</html>

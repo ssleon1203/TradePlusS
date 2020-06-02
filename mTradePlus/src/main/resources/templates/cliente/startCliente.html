@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace = "layout/layout :: head">
+</head>
+<body>
+	<header th:replace = "layout/layout :: header"></header>
+	
+<!--  ------------------LISTA DE CLIENTE------------------------------------------->
+	<main role="main">
+		<section class="container">
+
+			<div class="card text-center">
+				<div class="card-header">Clientes</div>
+				<div class="card-body">
+
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Nombres</th>
+								<th scope="col">Apellidos</th>
+								<th scope="col">Fecha Nacimiento</th>
+								<th scope="col">Direccion</th>
+								<th scope="col">Correo electronico</th>
+								<th scope="col"></th>
+							</tr>
+						</thead>
+						<tbody th:each="cliente: ${clientes}">
+							<tr>
+								<th scope="row" th:text="${cliente.idCliente}">1</th>
+								<td th:text="${cliente.nombreCliente}">.</td>
+								<td th:text="${cliente.apellidoCliente}">.</td>
+								<td th:text="${cliente.fechaNacimiento}">.</td>
+								<td th:text="${cliente.direccionCliente}">.</td>
+								<td th:text="${cliente.correoCliente}">.</td>
+								<td>
+									<a href="" class="btn btn-secondary"> <i class="fas fa-info"></i> </a>
+									<a th:href="@{'/mTradePlus/cliente/editarCliente/' + ${cliente.idCliente}}" class="btn btn-info"> <i class="fas fa-edit"></i> </a>
+								<a th:href="@{'/mTradePlus/cliente/eliminarCliente/' + ${cliente.idCliente}}" class="btn btn-danger"> <i class="fas fa-trash"></i> </a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+				<!--  --------------------- EN ESTE FOOTER SE AGREGAN BOTONES --------------------->
+				<div class="card-footer text-center">
+					<a th:href="@{/mTradePlus/cliente/nuevo}" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Nuevo</a>
+				</div>			
+			</div>	
+
+		</section>
+	</main>
+<!--  ----------------FOOTER------------------------------------------------>	
+	<footer th:replace = "layout/layout :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name = "description" content = "Compra y venta de productos">
+	<meta name = "author" content = "Grupo Trade+">
+	
+	<!-- TITULO -->
+	<title>Trade+</title>
+	
+	<!-- AGREGANDO LOS CSS EN ORDEN -->
+   	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+   	<link rel="stylesheet" th:href="@{/css/chosen.min.css}">
+   	<link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
+   	<link rel="stylesheet" th:href="@{/css/solid.min.css}">
+    
+</head>
+<body>
+  <!--  ------------------------------------------------------------->
+  	<header th:fragment="header">
+  	
+  		<!--  EL COLOR DE LA BARRA DE BUSCADOR-->
+	  <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+	  <a class="navbar-brand" href="#"><i class="fas fa-trademark"></i> Trade+</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	
+	 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	   
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item disable">
+	        <a class="nav-link" href="#"> <i class="fas fa-store"></i> Inicio <span class="sr-only">(current)</span></a>
+	      </li>
+	       
+	      <li class="nav-item disable">
+	        <a class="nav-link" href="#"> <i class="fas fa-shopping-cart"></i> Compras</a>
+	      </li>
+	      
+	      <li class="nav-item disable">
+	        <a class="nav-link" href="#"> <i class="fas fa-money-bill-wave"></i> Ventas</a>
+	      </li>
+	      
+	      <li class="nav-item disable">
+	        <a class="nav-link" href="#"> <i class="fas fa-user"></i> Perfil</a>
+	      </li>
+	    </ul>
+	    <form class="form-inline my-1 my-lg-1">
+	      <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." aria-label="Search">
+	      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"><i class="fas fa-search"></i> Buscar</button>
+	    </form>
+	  </div>
+	  
+	</nav>
+  	
+  	</header>
+ <!--  -------------------MENSAJES DE ERRORES------------------------------------------>
+  	<section th:fragment = "sectionError" class = "container">
+  	    <h1>Estamos trabajando para entregarle los mejores productos</h1>
+  	</section>
+  	
+  	<main th:fragment = "mainError" role="main">
+		<section class="jumbotron text-center">
+		    <div class="container">
+		      <h1>Estamos trabajando para entregarle los mejores productos</h1>
+		      <p class="lead text-muted"> <i class="fas fa-smile-wink"></i> Agradecemos su paciencia</p>
+		    </div>
+		</section>
+	</main>
+<!--  ------------------FECHA NACIMIENTO------------------------------------------->
+	<section th:fragment = "fechaNacimiento" class = "container">
+  	    <p>
+  	    <label for="date">Fecha nacimiento</label>
+  	    <input type = "date" id="date">
+  	    </p>
+  	</section>
+  <!--  ------------------------------------------------------------->
+  	<footer th:fragment="footer">
+  	<!-- SE AGREGAN BOTONES-->
+	<!-- AGREGAR EN EL ORDEN QUE SE INDICA ABAJO-->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+	<script th:src="@{/js/popper.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<!-- LUEGO SE AGREGAN LOS DEMAS JS EN ORDEN-->
+	<script th:src="@{/js/chosen.jquery.min.js}"></script>
+	<script th:src="@{/js/fontawesome.min.js}"></script>
+	<script th:src="@{/js/sweetalert.min.js}"></script>
+	
+  	</footer>
+  <!--  ------------------------------------------------------------->
+</body>
+</html>
