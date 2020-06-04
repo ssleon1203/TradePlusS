@@ -13,46 +13,54 @@
 			<div class="card-header">Editar Vendedor</div>
 			<div class="card-body text-left">
 			
-			 <form th:action="@{/mTradePlus/vendedor/guardarVendedor}" th:object="${vendedor}" method="post">
+			 <form class="was-validated" th:action="@{/mTradePlus/vendedor/guardarVendedor}" th:object="${vendedor}" method="post">
 				  
 				 <div class="form-row">
 				    <div class="form-group col-md-6">
 				      <label for="dniVendedor">DNI</label>
-				      <input type="text" class="form-control" th:field="*{dniVendedor}" placeholder="Ingrese su DNI">
+				      <input type="text" class="form-control" th:field="*{dniVendedor}" placeholder="Ingrese su DNI" required>
+				      <div class="invalid-feedback">Ingrese su DNI</div>
 				    </div>
 				    
 				    <div class="form-group col-md-6">
 				      <label for="rucVendedor">RUC</label>
-				      <input type="text" class="form-control" th:field="*{rucVendedor}" placeholder="Ingrese su RUC">
+				      <input type="text" class="form-control" th:field="*{rucVendedor}" placeholder="Ingrese su RUC" required>
+				      <div class="invalid-feedback">Ingrese su RUC</div>
 				    </div>
 				 </div>
 				 
 				  <div class="form-row">
 					  <div class="form-group col-md-6">
 					    <label for="nombreVendedor">Nombre completo</label>
-					    <input type="text" class="form-control" th:field="*{nombreVendedor}" placeholder="Nombre completo">
+					    <input type="text" class="form-control" th:field="*{nombreVendedor}" placeholder="Nombre completo" required>
+					    <div class="invalid-feedback">Ingrese su nombre completo</div>
 					  </div>
 					  
 					  <div class="form-group col-md-6">
 					    <label for="apellidoVendedor">Apellido Completo</label>
-					    <input type="text" class="form-control" th:field="*{apellidoVendedor}" placeholder="Apellido completo" >
+					    <input type="text" class="form-control" th:field="*{apellidoVendedor}" placeholder="Apellido completo" required>
+					    <div class="invalid-feedback">Ingrese su apellidos completo</div>
 					  </div>
 				  </div>
 				  
 				  <div class="form-row">
 					  <div class="form-group col-md-6">
 					    <label for="fechaNacimientoV">Fecha de nacimiento</label>
-					    <input type="date" class="form-control" th:field="*{fechaNacimientoV}" placeholder="AA/MM/DD" >
+					    <input type="date" class="form-control" th:field="*{fechaNacimientoV}" placeholder="AA/MM/DD" required>
+					    <div class="invalid-feedback">Seleccione su fecha de nacimiento</div>
 					  </div>
+					  
 					  <div class="form-group col-md-6">
 					    <label for="direccionVendedor">Direccion completa</label>
-					    <input type="text" class="form-control" th:field="*{direccionVendedor}" placeholder="Ingrese su direccion de residencia">
+					    <input type="text" class="form-control" th:field="*{direccionVendedor}" placeholder="Ingrese su direccion de residencia" required>
+					    <div class="invalid-feedback">Ingrese su direccion completa</div>
 					  </div>
 				  </div>
 				  
 				  <div class="form-row">
 						<label for="correoVendedor">Correo electronico</label> 
-						<input type="email"	class="form-control" th:field="*{correoVendedor}" placeholder="ejemplo@gmail.com">
+						<input type="email"	class="form-control" th:field="*{correoVendedor}" placeholder="ejemplo@gmail.com" required>
+				  		<div class="invalid-feedback">Ingrese su correo electronico</div>
 				  </div>
 				  
 				  <button type="submit" class="btn btn-success"><i class="fas fa-check-circle"></i> Grabar </button>
