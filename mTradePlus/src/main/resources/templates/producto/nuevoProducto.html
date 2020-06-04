@@ -31,14 +31,14 @@
 					  <div class="form-group col-md-6">
 					    <label for="nombreProducto">Nombre del producto</label>
 					    <input type="text" class="form-control" th:field="*{nombreProducto}" placeholder="Ingrese el nombre del producto" required>
+					  	<div class="invalid-feedback">Ingrese nombre para el producto</div>
 					  </div>
-					  <div class="invalid-feedback">Campo requerido</div>
 					  
 					  <div class="form-group col-md-6">
 					    <label for="cantidadProducto">Cantidad de producto</label>
 					    <input type="text" class="form-control" th:field="*{cantidadProducto}" placeholder="Ingrese la cantidad de productos" required>
+					  	<div class="invalid-feedback">Cantidad minima 1 producto</div>
 					  </div>
-					  <div class="invalid-feedback">Campo rquerido</div>
 				  </div>
 				  
 				  <div class="form-row">
@@ -46,7 +46,7 @@
 					  <div class="form-group col-md-6" >
 					    <label for="precioProducto">Precio unitario</label>
 					    <input type="number" step = "any" class="form-control" th:field="*{precioProducto}" required>
-					    <div class="invalid-feedback">Example invalid custom file feedback</div>
+					    <div class="invalid-feedback">Ingrese el precio para el producto</div>
 					  </div>
 					  
 				  </div>
@@ -54,8 +54,8 @@
 				   <div class="form-row">
 						
 						<label for="descripcionProducto">Descripcion de producto</label>
-					     <input type="text" class="form-control" th:field="*{descripcionProducto}" placeholder="Ingrese una breve descripcion para el producto">
-					  	
+					    <input type="text" class="form-control" th:field="*{descripcionProducto}" placeholder="Ingrese una breve descripcion para el producto" required>
+					  	<div class="invalid-feedback">Ingrese una descripcion breve</div> 
 					</div>
 				  
 				  <button type="submit" class="btn btn-success"><i class="fas fa-check-circle"></i> Grabar </button>
