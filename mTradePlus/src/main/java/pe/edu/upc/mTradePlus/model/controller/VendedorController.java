@@ -72,7 +72,7 @@ public class VendedorController {
 			return "/vendedor/editarVendedor";
 		}
 	//------------------------- SE EDITA CLIENTE -------------------------
-		@GetMapping("eliminarVendedor/{idVendedor}")
+		@GetMapping("/eliminarVendedor/{idVendedor}")
 		public String eliminarVendedor(@PathVariable("idVendedor") Integer id, Model model) {
 			try {
 				Optional<Vendedor> optional = vendedorService.findById(id);

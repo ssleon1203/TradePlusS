@@ -76,7 +76,7 @@ public class ClienteController {
 		return "/cliente/editarCliente";
 	}
 //------------------------- SE EDITA CLIENTE -------------------------
-	@GetMapping("eliminarCliente/{idCliente}")
+	@GetMapping("/eliminarCliente/{idCliente}")
 	public String eliminarCliente(@PathVariable("idCliente") Integer id, Model model) {
 		try {
 			Optional<Cliente> optional = clienteService.findById(id);

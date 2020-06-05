@@ -51,7 +51,7 @@ public class Cliente {
 	@Past(message = "Debe ingresar fecha de nacimiento")
 	@Column(name = "fechaNacimiento", nullable = false)
 	@Temporal(value = TemporalType.DATE)
-	@DateTimeFormat(pattern = "yy-mm-dd")
+	@DateTimeFormat(pattern = "yy-MM-dd")
 	private Date fechaNacimiento;
 	
 	@NotBlank(message = "Debe ingresar una direccion")
