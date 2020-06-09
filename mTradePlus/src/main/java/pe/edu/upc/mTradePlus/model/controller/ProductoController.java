@@ -40,7 +40,7 @@ public class ProductoController {
 		}
 		return "/producto/startProducto";
 	}
-//------------------------- SE AGREGA NUEVO CLIENTE -------------------------
+//------------------------- SE AGREGA NUEVO PRODUCTO -------------------------
 		@GetMapping("/nuevo")
 		public String nuevoProducto(Model model) {
 			Producto producto = new Producto();
@@ -56,7 +56,7 @@ public class ProductoController {
 			
 			return "/producto/nuevoProducto";
 		}
-//------------------------- SE GUARDA NUEVO CLIENTE -------------------------
+//------------------------- SE GUARDA NUEVO PRODUCTO -------------------------
 		@PostMapping("/guardarProducto")
 		public String guardarProducto(@ModelAttribute("producto") Producto producto, Model model, SessionStatus status) {
 			try {
@@ -68,7 +68,7 @@ public class ProductoController {
 			}
 			return "redirect:/mTradePlus/producto";
 		}
-//------------------------- SE EDITA CLIENTE -------------------------
+//------------------------- SE EDITA PRODUCTO -------------------------
 		@GetMapping("/editarProducto/{idProducto}")
 		public String editarProducto(@PathVariable("idProducto") Integer id, Model model) {
 			try {
@@ -88,7 +88,7 @@ public class ProductoController {
 			}
 			return "/producto/editarProducto";
 		}
-//------------------------- SE EDITA CLIENTE -------------------------
+//------------------------- SE ELIMINA PRODUCTO -------------------------
 		@GetMapping("/eliminarProducto/{idProducto}")
 		public String eliminarProducto(@PathVariable("idProducto") Integer id, Model model) {
 			try {

@@ -15,6 +15,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Past;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -51,21 +52,30 @@ public class Compra {
 	@Column(name = "cantidadCompra", nullable = false)
 	private Integer cantidadCompra;
 	
-	@Future(message = "Debe ingresar fecha de compra")
+	@Past(message = "Debe ingresar fecha de compra")
 	@Column(name = "fechaCompra", nullable = false)
 	@Temporal(value = TemporalType.DATE)
-	@DateTimeFormat(pattern = "yy-mm-dd")
+	@DateTimeFormat(pattern = "yy-MM-dd")
 	private Date fechaCompra;
 	
 	@Future(message = "Debe ingresar fecha de entrega")
 	@Column(name = "fechaEntrega", nullable = false)
 	@Temporal(value = TemporalType.DATE)
-	@DateTimeFormat(pattern = "yy-mm-dd")
+	@DateTimeFormat(pattern = "yy-MM-dd")
 	private Date fechaEntrega;
 	
-	//RELACION: UNA COMPRA TIENE MUCHAS SUSCRIPCIONES
+//--------------RELACION: MUCHAS COMPRAS TIENEN UNA SUSCRIPCION--------------
 	@ManyToOne
-	@JoinColumn(name = "IdSuscripcion")
+	@JoinColumn(name = "idSuscripcion")
 	private Suscripcion suscripcion;
 	
+//--------------RELACION: MUCHOS A MUCHOS CON PRODUCTO--------------
+	@ManyToOne
+	@JoinColumn(name = "idProducto")
+	private Producto producto;
+	
+//--------------RELACION: MUCHOS A MUCHOS CON CLIENTE--------------
+	@ManyToOne
+	@JoinColumn(name = "idCliente")
+	private Cliente cliente;
 }

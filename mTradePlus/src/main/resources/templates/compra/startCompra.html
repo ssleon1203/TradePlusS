@@ -24,8 +24,8 @@
 								<th scope="col">Cantidad comprada</th>
 								<th scope="col">Fecha de compra</th>
 								<th scope="col">Fecha de entrega</th>
-								<th scope="col">Nombre de Suscripcion</th>
-								<th scope="col">Precio de Suscripcion</th>
+								<th scope="col">Suscripcion</th>
+								<th scope="col">Producto</th>
 							</tr>
 						</thead>
 						<tbody th:each="compra: ${compras}">
@@ -38,16 +38,26 @@
 								<td th:text="${compra.cantidadCompra}">.</td>
 								<td th:text="${compra.fechaCompra}">.</td>
 								<td th:text="${compra.fechaEntrega}">.</td>
-								<td th:text="${compra.nombreSuscripcion}">.</td>
-								<td th:text="${compra.precioSuscripcion}">.</td>
+								<td th:text="${compra.suscripcion.nombreSuscripcion + '- S/.' + compra.suscripcion.precioSuscripcion}">.</td>
+								<td th:text="${compra.producto.nombreProducto}">.</td>
+							
+								<td>
+									<a href="" class="btn btn-secondary"> <i class="fas fa-info"></i> </a>
+									<a th:href="@{'/mTradePlus/compra/editarCompra/' + ${compra.idCompra}}" class="btn btn-info"> <i class="fas fa-edit"></i> </a>
+									<a th:href="@{'/mTradePlus/compra/eliminarCompra/' + ${compra.idCompra}}" class="btn btn-danger"> <i class="fas fa-trash"></i> </a>
+								</td>
+							
 							</tr>
 						</tbody>
 					</table>
 
-				</div>
-				<div class="card-footer text-muted"></div>
-			</div>
-
+					
+						</div>
+				<!--  --------------------- EN ESTE FOOTER SE AGREGAN BOTONES --------------------->
+							<div class="card-footer text-center">
+								<a th:href="@{/mTradePlus/compra/nuevo}" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Nuevo</a>
+							</div>	
+						</div>
 
 
 		</section>

@@ -5,18 +5,17 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -47,20 +46,20 @@ public class Producto {
 	@Column(name = "cantidadProducto", nullable = false)
 	private Integer cantidadProducto;
 	
-	//RELACION: MUCHOS PRODUCTOS LO INGRESA UN VENDEDOR
+//--------------RELACION: MUCHOS PRODUCTOS LO INGRESA UN VENDEDOR--------------
 	@ManyToOne
 	@JoinColumn(name="idVendedor")
 	private Vendedor vendedor;
 	
-	//RELACION: MUCHOS A MUCHOS CON CLIENTE
-	@ManyToMany(mappedBy = "productos")
-	private List<Cliente> clientes;
+//--------------RELACION: UN PRODUCTO ESTA EN MUCHAS COMPRAS--------------
+	@OneToMany(mappedBy = "producto", fetch = FetchType.LAZY)
+	private List<Compra> compras;
 	
 	public Producto() {
-		clientes = new ArrayList<>();
+		compras = new ArrayList<>();
 	}
 	
-	public void addCliente(Cliente cliente) {
-		clientes.add(cliente);
+	public void addCompra(Compra compra) {
+		compras.add(compra);
 	}
 }

@@ -6,12 +6,11 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -63,18 +62,17 @@ public class Cliente {
 	@Column(name = "correoCliente",length = 40, nullable = false)
 	private String correoCliente;
 	
-	//RELACION: UN CLIENTE COMPRA MUCHOS PRODUCTOS
-	@ManyToMany
-	@JoinTable(name = "compra",
-			joinColumns = { @JoinColumn(name = "clienteId", referencedColumnName = "idCliente")}, 
-			inverseJoinColumns = {@JoinColumn(name = "productoId", referencedColumnName = "idProducto")})
-	private List<Producto> productos;
+//--------------RELACION: UN CLIENTE REALIZA MUCHAS COMPRAS--------------
+	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
+	private List<Compra> compras;
 	
 	public Cliente() {
-		productos = new ArrayList<>();
+		compras = new ArrayList<>();
 	}
 	
-	public void addProducto(Producto producto) {
-		productos.add(producto);
+	public void addCompra(Compra compra) {
+		compras.add(compra);
 	}
+	
+	
 }
