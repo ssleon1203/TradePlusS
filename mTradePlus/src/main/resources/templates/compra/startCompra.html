@@ -40,7 +40,7 @@
 								<td th:text="${compra.fechaEntrega}">.</td>
 								<td th:text="${compra.suscripcion.nombreSuscripcion + '- S/.' + compra.suscripcion.precioSuscripcion}">.</td>
 								<td th:text="${compra.producto.nombreProducto}">.</td>
-							
+						
 								<td>
 									<a href="" class="btn btn-secondary"> <i class="fas fa-info"></i> </a>
 									<a th:href="@{'/mTradePlus/compra/editarCompra/' + ${compra.idCompra}}" class="btn btn-info"> <i class="fas fa-edit"></i> </a>
