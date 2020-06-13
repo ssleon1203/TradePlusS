@@ -22,17 +22,19 @@
 				<th scope="col">Precio</th>
 				<th scope="col">Descripcion del producto</th>
 				<th scope="col">Stock del producto</th>
+				<th scope="col">Categoria del producto</th>
 				<th scope="col"></th>
 			</tr>
 		</thead>
 		<tbody th:each="producto: ${productos}">
 			<tr>
 				<th scope="row" th:text="${producto.idProducto}">1</th>
-				<td th:text="${producto.vendedor.dniVendedor + ': ' + producto.vendedor.nombreVendedor}">.</td>
+				<td th:text="${producto.vendedor.correoVendedor + ' - ' + producto.vendedor.nombreVendedor}">.</td>
 				<td th:text="${producto.nombreProducto}">.</td>
 				<td th:text="${producto.precioProducto}">.</td>
 				<td th:text="${producto.descripcionProducto}">.</td>
 				<td th:text="${producto.cantidadProducto}">.</td>
+				<td th:text="${producto.categoria.nombreCategoria}">.</td>
 				
 				<td>
 					<a href="" class="btn btn-secondary"> <i class="fas fa-info"></i> </a>

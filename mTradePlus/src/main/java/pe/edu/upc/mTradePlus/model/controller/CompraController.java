@@ -84,32 +84,6 @@ public class CompraController {
 		}
 		return "redirect:/mTradePlus/compra";
 	}
-//------------------------- SE EDITA COMPRA -------------------------
-			@GetMapping("/editarCompra/{calificacionCompra}")
-			public String editarProducto(@PathVariable("calificacionCompra") Integer calificacionCompra, Model model) {
-				try {
-					Optional<Compra> optional = compraService.findById(calificacionCompra);
-					if(optional.isPresent()) {
-						model.addAttribute("compra", optional.get());
-						
-						List<Cliente> clientes = clienteService.readAll();
-						model.addAttribute("clientes", clientes);
-						
-						List<Producto> productos = productoService.readAll();
-						model.addAttribute("productos", productos);
-						
-						List<Suscripcion> suscripciones = suscripcionService.readAll();
-						model.addAttribute("suscripciones", suscripciones);
-					}
-					else {
-						return "redirect: /mTradePlus/producto";
-					}
-				} catch (Exception e) {
-					// TODO: handle exception
-					e.printStackTrace();
-				}
-				return "/producto/editarProducto";
-			}
 //------------------------- SE ELIMINA NUEVA COMPRA -------------------------
 	@GetMapping("/eliminarCompra/{idCompra}")
 	public String eliminarCompra(@PathVariable("idCompra") Integer id, Model model){

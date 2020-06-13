@@ -51,6 +51,11 @@ public class Producto {
 	@JoinColumn(name="idVendedor")
 	private Vendedor vendedor;
 	
+//--------------RELACION: MUCHOS PRODUCTOS TIENEN UNA CATEGORIA--------------
+	@ManyToOne
+	@JoinColumn(name = "idCategoria")
+	private Categoria categoria;
+	
 //--------------RELACION: UN PRODUCTO ESTA EN MUCHAS COMPRAS--------------
 	@OneToMany(mappedBy = "producto", fetch = FetchType.LAZY)
 	private List<Compra> compras;

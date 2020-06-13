@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import pe.edu.upc.mTradePlus.model.entity.Categoria;
 import pe.edu.upc.mTradePlus.model.entity.Producto;
 import pe.edu.upc.mTradePlus.model.entity.Vendedor;
+import pe.edu.upc.mTradePlus.model.service.CategoriaService;
 import pe.edu.upc.mTradePlus.model.service.ProductoService;
 import pe.edu.upc.mTradePlus.model.service.VendedorService;
 
@@ -29,6 +31,9 @@ public class ProductoController {
 	
 	@Autowired
 	private VendedorService vendedorService;
+	
+	@Autowired
+	private CategoriaService categoriaService;
 	
 	@GetMapping
 	public String starProducto(Model model) {
@@ -49,6 +54,9 @@ public class ProductoController {
 			try {
 				List<Vendedor> vendedores  = vendedorService.readAll();
 				model.addAttribute("vendedor", vendedores);
+				
+				List<Categoria> categorias = categoriaService.readAll();
+				model.addAttribute("categoria", categorias);
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
@@ -78,6 +86,9 @@ public class ProductoController {
 					
 					List<Vendedor> vendedores = vendedorService.readAll();
 					model.addAttribute("vendedores", vendedores);
+					
+					List<Categoria> categorias = categoriaService.readAll();
+					model.addAttribute("categorias", categorias);
 				}
 				else {
 					return "redirect: /mTradePlus/producto";

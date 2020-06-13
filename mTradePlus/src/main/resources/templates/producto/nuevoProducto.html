@@ -16,6 +16,7 @@
 				  
 				  <div class="form-row">
 				    <div class="form-group col-md-6">
+				      
 				      <label for="vendedor">Vendedor</label>
 				      <select th:field="*{vendedor}" class="custom-select" required>
 				      	<option value="" >Seleccione su nombre de vendedor</option>
@@ -24,6 +25,16 @@
 				      		th:text="${vendedor.dniVendedor + ' - ' + vendedor.nombreVendedor}" ></option>
 				      </select>
 				      <div class="invalid-feedback">Seleccionar su nombre</div>
+				    
+				      <label for="categoria">Categoria</label>
+				      <select th:field="*{categoria}" class="custom-select" required>
+				      	<option value="" >Seleccione una categoria para el producto</option>
+				      	<option th:each="categoria : ${categoria}"
+				      		th:value="${categoria.idCategoria}"
+				      		th:text="${categoria.nombreCategoria}" ></option>
+				      </select>
+				      <div class="invalid-feedback">Seleccionar una categoria</div>
+				      
 				    </div>
 				  </div>
 				  
