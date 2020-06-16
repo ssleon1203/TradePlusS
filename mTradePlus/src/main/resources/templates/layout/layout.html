@@ -18,11 +18,11 @@
     
 </head>
 <body>
-  <!--  ------------------------------------------------------------->
+ <!--  ----------------------HEADER GENERAL--------------------------------------->
   	<header th:fragment="header">
 		<!--  EL COLOR DE LA BARRA DE BUSCADOR-->
 	  <nav class="navbar navbar-expand-lg navbar-light bg-warning">
-	  <a class="navbar-brand" href="#"><img src="/imagenes/LogoTrade.png" width="70" height="70" class="img-fluid" alt="Logo Trade+"></a>
+	  <a class="navbar-brand" th:href="@{/mTradePlus/landing}"><img src="/imagenes/LogoTrade.png" width="70" height="70" class="d-inline-block align-top" alt=""></a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -86,6 +86,8 @@
 	<script th:src="@{/js/chosen.jquery.min.js}"></script>
 	<script th:src="@{/js/fontawesome.min.js}"></script>
 	<script th:src="@{/js/sweetalert.min.js}"></script>
+	
+	<div class="bg-light text-center"> <p><strong>Trabajo realizado por alumnos de UPC | Todos los derechos reservados 2020 ©</strong></div>
 	
   	</footer>
   <!--  ------------------------------------------------------------->
