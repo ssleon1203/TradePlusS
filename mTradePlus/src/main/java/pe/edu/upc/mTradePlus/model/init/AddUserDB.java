@@ -39,18 +39,35 @@ public class AddUserDB implements CommandLineRunner{
 		vendedor.setPassword(new BCryptPasswordEncoder().encode("vendedor"));
 		vendedor.setEnable(true);
 		
+		Usuario administrador = new Usuario();
+		administrador.setUsername("adminJesus");
+		administrador.setPassword(new BCryptPasswordEncoder().encode("godmode"));
+		administrador.setEnable(true);
+		
 		cliente.addAuthority("ROLE_CLIENTE");
 		cliente.addAuthority("ACCESS_ADDCOMPRA");
-		//cliente.addAuthority("ACCESS_SEEPRODUCTO");
+		cliente.addAuthority("ACCESS_DELCOMPRA");
 		
 		vendedor.addAuthority("ROLE_VENDEDOR");
 		vendedor.addAuthority("ACCESS_ADDPRODUCTO");
 		vendedor.addAuthority("ACCESS_EDITPRODUCTO");
-		//vendedor.addAuthority("ACCESS_SEEVENTAS");
+		vendedor.addAuthority("ACCESS_DELPRODUCTO");
+		
+		administrador.addAuthority("ROLE_ADMINISTRADOR");
+		administrador.addAuthority("ACCESS_ADDPRODUCTO");
+		administrador.addAuthority("ACCESS_EDITPRODUCTO");
+		administrador.addAuthority("ACCESS_DELPRODUCTO");
+		administrador.addAuthority("ACCESS_ADDCLIENTE");
+		administrador.addAuthority("ACCESS_EDITCLIENTE");
+		administrador.addAuthority("ACCESS_DELCLIENTE");
+		administrador.addAuthority("ACCESS_ADDVENDEDOR");
+		administrador.addAuthority("ACCESS_EDITVENDEDOR");
+		administrador.addAuthority("ACCESS_DELVENDEDOR");
 		
 		usuarioRepository.save(cliente);
 		usuarioRepository.save(vendedor);
-		*/
+		usuarioRepository.save(administrador);*/
+		
 	}
 
 }

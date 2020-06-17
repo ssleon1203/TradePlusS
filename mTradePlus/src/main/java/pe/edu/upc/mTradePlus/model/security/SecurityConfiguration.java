@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -18,6 +19,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private UsuarioDetailsService usuarioDetailsService;
 	
+	@Autowired
+	private LoggingAccessDeniedHandler loggingAccessDeniedHandler;
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -27,7 +30,42 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// TODO Auto-generated method stub
-		super.configure(http);
+		//super.configure(http);
+		http
+			.authorizeRequests()
+				.antMatchers("/mTradePlus/index.html").permitAll()
+				.antMatchers("/mTradePlus/landing").permitAll()
+				.antMatchers("mTradePlus/producto").permitAll()
+				//CLIENTE
+				.antMatchers("/mTradePlus/compra").authenticated()
+				.antMatchers("/mTradePlus/compra/nuevo").hasAuthority("ACCESS_ADDCOMPRA")
+				.antMatchers("/mTradePlus/compra/eliminarCompra/**").hasAuthority("ACCESS_DELCOMPRA")
+				//VENDEDOR
+				.antMatchers("/mTradePlus/producto/nuevo").hasAuthority("ACCESS_ADDPRODUCTO")
+				.antMatchers("/mTradePlus/producto/editarProducto/**").hasAuthority("ACCESS_EDITPRODUCTO")
+				.antMatchers("/mTradePlus/producto/eliminarProducto/**").hasAuthority("ACCESS_DELTPRODUCTO")
+				//ADMIN
+				.antMatchers("/mTradePlus/cliente").hasRole("ADMINISTRADOR")
+				.antMatchers("/mTradePlus/vendedor").hasRole("ADMINISTRADOR")
+			.and()
+			.formLogin()
+				.loginProcessingUrl("/signin")
+				.loginPage("/mTradePlus/login")
+				.usernameParameter("inputUsername")
+				.passwordParameter("inputPassword")
+			.and()
+			.logout()
+				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+				.logoutSuccessUrl("/mTradePlus")
+			.and()
+			.rememberMe()
+				.tokenValiditySeconds(2592000)
+				.key("Cl4v3.")
+				.rememberMeParameter("checkRememberMe")
+				.userDetailsService(usuarioDetailsService)
+			.and()
+				.exceptionHandling()
+				.accessDeniedHandler(loggingAccessDeniedHandler);
 	}
 	
 	@Bean

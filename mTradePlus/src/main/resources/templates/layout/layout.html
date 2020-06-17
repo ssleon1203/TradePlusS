@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" 
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:fragment="head">
     <meta charset="utf-8">
@@ -34,21 +35,25 @@
 	        <a class="nav-link" th:href="@{/mTradePlus/producto}"> <i class="fas fa-store"></i> Inicio</a>
 	      </li>
 	       
-	      <li class="nav-item">
+	      <li sec:authorize="hasRole('ROLE_CLIENTE')" class="nav-item">
 	        <a class="nav-link" th:href="@{/mTradePlus/compra}"> <i class="fas fa-shopping-cart"></i> Compras</a>
 	      </li>
 	      
-	      <li class="nav-item">
+	      <li sec:authorize="hasRole('ROLE_VENDEDOR')" class="nav-item">
 	        <a class="nav-link" href="#"> <i class="fas fa-money-bill-wave"></i> Ventas</a>
 	      </li>
 	      
-	      <li class="nav-item">
+	      <li sec:authorize="hasRole('ROLE_ADMINISTRADOR')" class="nav-item">
 	        <a class="nav-link" th:href="@{/mTradePlus/cliente}"> <i class="fas fa-user"></i> Clientes</a>
 	      </li>
 	      
-	      <li class="nav-item">
+	      <li sec:authorize="hasRole('ROLE_ADMINISTRADOR')" class="nav-item">
 	        <a class="nav-link" th:href="@{/mTradePlus/vendedor}"> <i class="fas fa-user-tie"></i> Vendedores</a>
 	      </li>
+	      
+	      <li sec:authorize="isAuthenticated()" class="nav-item">
+		     <a class="btn btn-outline-secondary" th:href="@{/logout}" aria-disabled="true">Cerrar Sesión: <span sec:authentication="name">Username</span></a>
+		   </li>
 	      
 	    </ul>
 	    
@@ -87,7 +92,7 @@
 	<script th:src="@{/js/fontawesome.min.js}"></script>
 	<script th:src="@{/js/sweetalert.min.js}"></script>
 	
-	<div class="bg-light text-center"> <p><strong>Trabajo realizado por alumnos de UPC | Todos los derechos reservados 2020 ©</strong></div>
+	<div class="bg-light text-center"> <p><strong>Trabajo realizado por alumnos de UPC | Todos los derechos reservados &copy; 2020</strong></div>
 	
   	</footer>
   <!--  ------------------------------------------------------------->
