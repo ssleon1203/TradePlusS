@@ -28,8 +28,8 @@ public class AddUserDB implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		
 		// SOLO DESBLOQUEAR CUANDO SE REQUIERA CREAR USUARIO DE FORMA MANUAL
-		
-		/*Usuario cliente = new Usuario();
+		/*
+		Usuario cliente = new Usuario();
 		cliente.setUsername("cliente1");
 		cliente.setPassword(new BCryptPasswordEncoder().encode("cliente"));
 		cliente.setEnable(true);
@@ -41,15 +41,16 @@ public class AddUserDB implements CommandLineRunner{
 		
 		cliente.addAuthority("ROLE_CLIENTE");
 		cliente.addAuthority("ACCESS_ADDCOMPRA");
-		cliente.addAuthority("ACCESS_SEEPRODUCTO");
+		//cliente.addAuthority("ACCESS_SEEPRODUCTO");
 		
 		vendedor.addAuthority("ROLE_VENDEDOR");
 		vendedor.addAuthority("ACCESS_ADDPRODUCTO");
-		vendedor.addAuthority("ACCESS_SEEVENTAS");
+		vendedor.addAuthority("ACCESS_EDITPRODUCTO");
+		//vendedor.addAuthority("ACCESS_SEEVENTAS");
 		
 		usuarioRepository.save(cliente);
-		usuarioRepository.save(vendedor);*/
-		
+		usuarioRepository.save(vendedor);
+		*/
 	}
 
 }
