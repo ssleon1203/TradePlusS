@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace = "layout/layout :: head">
+</head>
+<body>
+	<header th:replace = "layout/layout :: header"></header>
+	
+<!--  ------------------LISTA DE PRODUCTO------------------------------------------->
+	<main th:fragment = "listaProducto" role="main">
+		<section class="container-fluid">
+
+			<div class="card text-center">
+				<div class="card-header">Ventas</div>
+				<div class="card-body">
+					
+					<table class="table table-hover">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Datos Cliente</th>
+				<th scope="col">Nombre del Producto</th>
+				<th scope="col">Distrito entrega</th>
+				<th scope="col">Direccion entrega</th>
+				<th scope="col">Referencia entrega</th>
+				<th scope="col">Fecha entrega</th>
+				<th scope="col"></th>
+			</tr>
+		</thead>
+		<tbody th:each="compra: ${compras}">
+			<tr>
+				
+				<th scope="row" th:text="${compra.idCompra}">1</th>
+				<td th:text="${compra.cliente.dniCliente + ' - ' + compra.cliente.nombreCliente}">.</td>
+				<td th:text="${compra.producto.nombreProducto}">.</td>
+				<td th:text="${compra.distritoCompra}">.</td>
+				<td th:text="${compra.direccionEntrega}">.</td>
+				<td th:text="${producto.referenciaEntrega}">.</td>
+				<td th:text="${producto.fechaEntrega}">.</td>
+				
+			</tr>
+		</tbody>
+	</table>
+					
+			</div>
+<!--  --------------------- EN ESTE FOOTER SE AGREGAN BOTONES --------------------->
+					
+			</div>
+
+			
+	
+		</section>
+	</main>
+<!--  ----------------FOOTER------------------------------------------------>		
+	<footer th:replace = "layout/layout :: footer"></footer>
+</body>
+</html>

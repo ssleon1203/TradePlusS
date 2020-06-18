@@ -40,7 +40,7 @@
 	      </li>
 	      
 	      <li sec:authorize="hasRole('ROLE_VENDEDOR')" class="nav-item">
-	        <a class="nav-link" href="#"> <i class="fas fa-money-bill-wave"></i> Ventas</a>
+	        <a class="nav-link" th:href="@{/mTradePlus/venta}"> <i class="fas fa-money-bill-wave"></i> Ventas</a>
 	      </li>
 	      
 	      <li sec:authorize="hasRole('ROLE_ADMINISTRADOR')" class="nav-item">
