@@ -67,7 +67,7 @@ public class ClienteController {
 				model.addAttribute("cliente", optional.get());
 			}
 			else {
-				return "redirect: /mTradePlus/cliente";
+				return "redirect:/mTradePlus/cliente";
 			}
 		} catch (Exception e) {
 			// TODO: handle exception

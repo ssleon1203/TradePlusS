@@ -22,6 +22,8 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -63,6 +65,7 @@ public class Cliente {
 	private String correoCliente;
 	
 //--------------RELACION: UN CLIENTE REALIZA MUCHAS COMPRAS--------------
+	@JsonIgnoreProperties("cliente")
 	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
 	private List<Compra> compras;
 	

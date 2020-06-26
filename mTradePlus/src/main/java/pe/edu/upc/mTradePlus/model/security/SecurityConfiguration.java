@@ -31,6 +31,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		// TODO Auto-generated method stub
 		//super.configure(http);
+		//DESHABILITAR
+		http.csrf().disable();
 		http
 			.authorizeRequests()
 				.antMatchers("/mTradePlus/index.html").permitAll()
