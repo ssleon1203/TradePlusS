@@ -9,4 +9,5 @@ public interface ProductoService extends CrudService<Producto, Integer>{
 	List<Producto> fetchByMayorPrecioProducto(double precioProducto) throws Exception;
 	List<Producto> findByNombreProducto(String nombreProducto) throws Exception;
 	List<Producto> findByCantidadProducto(Integer cantidadProducto) throws Exception;
+	List<Producto> fetchByNombreProducto(String nombreProducto) throws Exception;
 }

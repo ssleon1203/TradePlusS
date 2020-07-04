@@ -38,6 +38,11 @@ public class ProductoController {
 	@GetMapping
 	public String starProducto(Model model) {
 		try {
+			//OBJETO PRODUCTO USADO PARA LA BUSQUEDA
+			Producto producto = new Producto();
+			
+			model.addAttribute("producto", producto);
+			
 			List<Producto> productos = productoService.readAll();
 			model.addAttribute("productos", productos);
 		} catch (Exception e) {
@@ -116,4 +121,22 @@ public class ProductoController {
 			}
 			return "redirect:/mTradePlus/producto";
 		}	
+		//------------------------- SE BUSCA PRODUCTO -------------------------
+		@PostMapping("/search")
+		public String search(@ModelAttribute("producto") Producto producto, Model model) {
+			try {
+				List<Producto> productos = productoService.fetchByNombreProducto(producto.getNombreProducto());
+				model.addAttribute("productos", productos);			
+				model.addAttribute("producto", producto);
+				// Mensajes
+				if (productos.size() > 0) {
+					model.addAttribute("mensajeOK", "Se encontraron: " + productos.size() + " productos");
+				} else {
+					model.addAttribute("mensajeError", "No se encontro ningún producto");
+				}
+			} catch (Exception e) {
+				System.err.println(e.getMessage());
+			}		
+			return "/producto/startProducto";
+		}
 }

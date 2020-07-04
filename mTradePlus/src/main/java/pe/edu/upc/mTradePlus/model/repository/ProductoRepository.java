@@ -13,4 +13,7 @@ public interface ProductoRepository extends JpaRepository<Producto, Integer>{
 	List<Producto> fetchByMayorPrecioProducto(double precioProducto) throws Exception;
 	List<Producto> findByNombreProducto(String nombreProducto) throws Exception;
 	List<Producto> findByCantidadProducto(Integer cantidadProducto) throws Exception;
+	
+	@Query("SELECT p FROM Producto p WHERE p.nombreProducto like %:nombreProducto%")
+	List<Producto> fetchByNombreProducto(String nombreProducto) throws Exception;
 }

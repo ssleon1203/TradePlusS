@@ -12,6 +12,16 @@
 			<div class="card text-center">
 				<div class="card-header">Productos</div>
 				<div class="card-body">
+					<p th:text="${mensajeOK}" class="bg-success text-white"></p>
+					<p th:text="${mensajeError}" class="bg-danger text-white"></p>
+					
+					<form th:action="@{/mTradePlus/producto/search}" method="post" th:object="${producto}" class="form-inline my-1 my-lg-1">
+					<div class="form-group">
+				      <label for="productos">Encuenta tu producto: </label>
+				       <input type="text" class="form-control mr-sm-2" th:field="*{nombreProducto}" placeholder="Buscar producto..." aria-label="Search">
+				      <button type="submit" class="btn btn-outline-dark my-2 my-sm-0"><i class="fas fa-search"></i> Buscar </button>
+				    </div>				
+				</form>
 					
 					<table class="table table-hover">
 		<thead class="thead-dark">

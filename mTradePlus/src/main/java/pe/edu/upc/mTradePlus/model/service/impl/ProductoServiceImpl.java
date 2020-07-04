@@ -71,4 +71,9 @@ public class ProductoServiceImpl implements ProductoService{
 		return productoRepository.findByCantidadProducto(cantidadProducto);
 	}
 
+	@Override
+	public List<Producto> fetchByNombreProducto(String nombreProducto) throws Exception {
+		return productoRepository.fetchByNombreProducto(nombreProducto);
+	}
+
 }
