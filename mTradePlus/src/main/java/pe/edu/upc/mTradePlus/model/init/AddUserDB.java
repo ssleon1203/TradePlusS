@@ -30,17 +30,20 @@ public class AddUserDB implements CommandLineRunner{
 		// SOLO DESBLOQUEAR CUANDO SE REQUIERA CREAR USUARIO DE FORMA MANUAL
 		/*
 		Usuario cliente = new Usuario();
-		cliente.setUsername("cliente1");
+		cliente.setUsername("Valeria");
+		cliente.setUsername("Patricia");
+		cliente.setUsername("Juliana");
 		cliente.setPassword(new BCryptPasswordEncoder().encode("cliente"));
 		cliente.setEnable(true);
 		
 		Usuario vendedor = new Usuario();
-		vendedor.setUsername("vendedor1");
+		vendedor.setUsername("Julian");
+		vendedor.setUsername("Analucia");
 		vendedor.setPassword(new BCryptPasswordEncoder().encode("vendedor"));
 		vendedor.setEnable(true);
 		
 		Usuario administrador = new Usuario();
-		administrador.setUsername("adminJesus");
+		administrador.setUsername("admin");
 		administrador.setPassword(new BCryptPasswordEncoder().encode("godmode"));
 		administrador.setEnable(true);
 		
