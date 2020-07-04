@@ -6,18 +6,18 @@
 	<header th:replace = "layout/layout :: header"></header>
 	
 <!--  ------------------LISTA DE PRODUCTO------------------------------------------->
-	<main th:fragment = "listaProducto" role="main">
+	<main th:fragment = "listaVenta" role="main">
 		<section class="container-fluid">
                                
 			<div class="card text-center">
-				<div class="card-header">Ventas</div>
+				<div class="card-header">Productos vendidos</div>
 				<div class="card-body">
 					
 					<table class="table table-hover">
 		<thead class="thead-dark">
 			<tr>
 				<th scope="col">#</th>
-				<th scope="col">Datos Cliente</th>
+				<!--<th scope="col">Datos Cliente</th>-->
 				<th scope="col">Nombre del Producto</th>
 				<th scope="col">Distrito entrega</th>
 				<th scope="col">Direccion entrega</th>
@@ -30,7 +30,7 @@
 			<tr>
 				
 				<th scope="row" th:text="${compra.idCompra}">1</th>
-				<td th:text="${compra.cliente.dniCliente + ' - ' + compra.cliente.nombreCliente}">.</td>
+				<!--<td th:text="${compra.cliente.nombreCliente}">.</td>-->
 				<td th:text="${compra.producto.nombreProducto}">.</td>
 				<td th:text="${compra.distritoCompra}">.</td>
 				<td th:text="${compra.direccionEntrega}">.</td>
