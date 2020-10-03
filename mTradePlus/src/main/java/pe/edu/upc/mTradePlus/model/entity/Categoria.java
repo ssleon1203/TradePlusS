@@ -13,6 +13,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+
+
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,6 +28,8 @@ public class Categoria {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idCategoria;
+	
+	
 	
 	@NotBlank(message = "Debe ingresar un nombre para la categoria")
 	@Column(name = "nombreCategoria", length = 30, nullable = false)
